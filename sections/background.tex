@@ -11,4 +11,64 @@ Cloud computing offers diverse service models to cater to a range of technical c
 \subsection {Serverless Computing}
 
 The relentless evolution of cloud computing ushers in a new era with the captivating emergence of serverless computing. This novel paradigm fundamentally reshapes the existing model by shifting the focus from infrastructure management to code execution. This platform abstracts away the underlying server complexities, empowering developers to concentrate on crafting the business logic of their applications \cite{Baldini17, SA20}.\\\\
-serverless computing offers a cost-effective, scalable, and elastic platform. It offers the scaling of resources that adapts to the fluctuating demands without any manual intervention. This results in cost savings as the developers only pay for the resources the application requires \cite{CIM+19}.\\
+serverless computing provides a cost-effective, scalable, and elastic platform. It offers the scaling of resources that adapts to the fluctuating demands without any manual intervention. This results in cost savings as the developers only pay for the resources the application requires and eliminates the need for upfront investments in large-scale infrastructure \cite{CIM+19}.\\\\ Additionally, this presents a valuable business model for cloud providers, optimizing the utilization of resources typically underutilized in long-running workloads. Through serverless-based resource allocation, cloud providers can enhance the efficiency of their spare capacity, making more effective use of previously underused resources \cite{TCBR21}.\\
+\subsubsection{Capabilities}
+
+\textbf{Auto-scaling}: Serverless applications adapt to workload fluctuations, scaling up or down automatically. This eradicates the necessity of overseeing individual server instances, preventing unnecessary costs during idle periods.
+
+\textbf{Flexible Scheduling}: Applications gain freedom from specific server dependencies. Serverless controllers dynamically schedule them across the cluster, ensuring an even distribution for optimal performance.
+
+\textbf{Event-driven Execution}: Functions respond to specific events, such as API calls or data changes, removing the need for continuously running servers and minimizing resource consumption.
+
+\textbf{Transparent Development}: Developers concentrate on coding without managing infrastructure. Cloud providers take care of server operations, runtime environments, and resource distribution.
+
+\textbf{Pay-as-you-go}: Costs are incurred only for the actual resources utilized by functions, promoting cost efficiency and eliminating the requirement for upfront investments in servers.\\\\
+
+\subsection {Serverless Function}
+
+Serverless computing revolves around the concept of serverless functions, although the term itself can be somewhat misleading as servers are still integral to the process. Despite this, "serverless" signifies that servers are abstracted, allowing developers to concentrate on business logic without delving into the underlying infrastructure\cite{WW21}.
+
+Serverless execution environment where you can upload small pieces of code (functions) that is responsible for a single task that don't need to run continuously. Instead, they wait for specific events (e.g., API requests, database changes) to trigger their execution. This eliminates the need for managing servers and allows for highly scalable and cost-effective deployments.
+
+ \textbf {\ac{AWS}}  \textbf{Lambda}  pioneered serverless computing, establishing key dimensions like cost, programming model, deployment, resource limits, security, and monitoring. It supports languages such as Node.js, Java, Python, and C\# \footnote{\url{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}}. While early versions had limited composability, recent improvements have addressed this issue. AWS Lambda seamlessly integrates with various AWS services, facilitating the use of Lambda functions as event handlers and for composing services \cite{Baldini17}.
+
+ \textbf{Google Cloud Functions}  was released in 2016 and offers serverless functions in Node.js, Python, Go, Ruby, or Java \footnote{\url{https://cloud.google.com/functions/docs/runtime-support}} in response to HTTP calls or events from specific Google Cloud services. Although functionality is currently evolving, future versions are expected to expand its capabilities.s \cite{Baldini17}.
+
+ \textbf{Microsoft Azure Functions} supports HTTP webhooks and integrates with Azure services to execute user-provided functions. The platform accommodates multiple languages, including C\#,Java, Javascript, Python, Typescript and any executable \footnote{\url{https://learn.microsoft.com/en-us/azure/azure-functions/functions-versions}}. The runtime code is open-source under the MIT License, and for streamlined development, the Azure Functions CLI provides a local environment for creating, testing, and debugging \cite{Baldini17}.
+
+ \textbf{IBM OpenWhisk} focuses on event-driven serverless programming, allowing the chaining of serverless functions to create composite functions. It supports languages like Go, Javascript, Java, Swift, Python, and arbitrary binaries within a Docker container \footnote{\url{https://openwhisk.apache.org/documentation.html}}. OpenWhisk, available on GitHub under the Apache open-source license, incorporates additional components for crucial functionalities like security, logging, and monitoring \cite{Baldini17}.\\
+
+\subsubsection{Challenges}
+
+\textbf{Cold Start}: When a function hasn't been active for a while, it experiences a "cold start," taking time to initialize and impacting performance.\\
+
+\textbf{Vendor Lock-in}: Embracing a specific platform might tie you to their ecosystem. Switching providers can be complex and costly, especially for intricate applications.\\
+
+\textbf{Limited Customization}: Unlike traditional deployments, you often have less control over the execution environment and runtime configurations. This might restrict optimization opportunities.\\
+
+\textbf{Debugging Challenges}: Debugging serverless functions can be trickier than traditional applications due to distributed execution and ephemeral nature. Specialized tools and approaches are often required.\\
+
+\textbf{Monitoring Complexity}: Monitoring performance and resource usage are needed in this domain as the executed function are short lived so additional tools are required that might be complex.\\
+
+\textbf{Security Concerns}: Multi-tenancy in serverless platforms necessitates robust security measures. Understanding provider practices and implementing proper security checks is essential.\\
+
+\textbf{Limited Resource Visibility}: Accessing detailed resource usage data for individual functions might be limited compared to traditional deployments. This can hinder cost analysis and optimization.\\
+
+\textbf{Development Learning Curve}: Shifting to a serverless mindset and mastering serverless development patterns requires learning new concepts and tools.\\
+
+\subsection{Cold Start}
+
+Serverless computing has revolutionized application development, offering remarkable scalability, agility, and cost savings. However, one persistent hurdle threatens to impede its seamless performance: cold starts. For a user uploading a fresh serverless function, the first request can be met with a chilling reality. Unlike traditional deployments with readily available resources, serverless platforms don't allocate resources to idle functions. So, upon the first request, the platform scrambles, allocating resources and deploying a new instance to handle the task, leading to a delay known as a cold start. This initial latency can significantly impact response times and user experience\cite{LYYO21}.\\
+
+Furthermore, even functions experiencing frequent requests aren't entirely immune. When traffic surges, serverless platforms auto-scale by deploying new function instances. From the perspective of these fresh copies, the first request encounters a cold start, potentially impacting performance during sudden spikes \cite{LYYO21}.\\
+
+Therefore, while cold starts represent the necessary flip side of serverless advantages, their potential impact demands careful consideration. By acknowledging this challenge and implementing mitigation strategies, developers can ensure their serverless applications remain warm and responsive, delivering a consistently positive user experience.
+
+\subsection{Current Research on Solving Cold Start Problem}
+
+
+
+
+
+
+
