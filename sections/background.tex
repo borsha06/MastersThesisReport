@@ -40,21 +40,21 @@ Serverless execution environment where you can upload small pieces of code (func
 
 \subsubsection{Challenges}
 
-\textbf{Cold Start}: When a function hasn't been active for a while, it experiences a "cold start," taking time to initialize and impacting performance.\\
+\textbf{Cold Start}: When a function hasn't been active for a while, it experiences a "cold start," taking time to initialize and impacting performance.
 
-\textbf{Vendor Lock-in}: Embracing a specific platform might tie you to their ecosystem. Switching providers can be complex and costly, especially for intricate applications.\\
+\textbf{Vendor Lock-in}: Embracing a specific platform might tie you to their ecosystem. Switching providers can be complex and costly, especially for intricate applications.
 
-\textbf{Limited Customization}: Unlike traditional deployments, you often have less control over the execution environment and runtime configurations. This might restrict optimization opportunities.\\
+\textbf{Limited Customization}: Unlike traditional deployments, you often have less control over the execution environment and runtime configurations. This might restrict optimization opportunities.
 
-\textbf{Debugging Challenges}: Debugging serverless functions can be trickier than traditional applications due to distributed execution and ephemeral nature. Specialized tools and approaches are often required.\\
+\textbf{Debugging Challenges}: Debugging serverless functions can be trickier than traditional applications due to distributed execution and ephemeral nature. Specialized tools and approaches are often required.
 
-\textbf{Monitoring Complexity}: Monitoring performance and resource usage are needed in this domain as the executed function are short lived so additional tools are required that might be complex.\\
+\textbf{Monitoring Complexity}: Monitoring performance and resource usage are needed in this domain as the executed function are short lived so additional tools are required that might be complex.
 
-\textbf{Security Concerns}: Multi-tenancy in serverless platforms necessitates robust security measures. Understanding provider practices and implementing proper security checks is essential.\\
+\textbf{Security Concerns}: Multi-tenancy in serverless platforms necessitates robust security measures. Understanding provider practices and implementing proper security checks is essential.
 
-\textbf{Limited Resource Visibility}: Accessing detailed resource usage data for individual functions might be limited compared to traditional deployments. This can hinder cost analysis and optimization.\\
+\textbf{Limited Resource Visibility}: Accessing detailed resource usage data for individual functions might be limited compared to traditional deployments. This can hinder cost analysis and optimization.
 
-\textbf{Development Learning Curve}: Shifting to a serverless mindset and mastering serverless development patterns requires learning new concepts and tools.\\
+\textbf{Development Learning Curve}: Shifting to a serverless mindset and mastering serverless development patterns requires learning new concepts and tools.
 
 \subsection{Cold Start}
 
@@ -64,7 +64,18 @@ Furthermore, even functions experiencing frequent requests aren't entirely immun
 
 Therefore, while cold starts represent the necessary flip side of serverless advantages, their potential impact demands careful consideration. By acknowledging this challenge and implementing mitigation strategies, developers can ensure their serverless applications remain warm and responsive, delivering a consistently positive user experience.
 
+\subsection{Contributing Factors of Cold Start}
+
+\textbf{Programming Language Impact}: Compiled languages like Java and C\# exhibit higher cold start overhead due to the additional setup required for their respective runtime environments (e.g., \textbf {\ac{JVM}}). This overhead originates from the necessity to initialize and load the runtime prior to function execution. Interpreted languages such as JavaScript, on the other hand, generally bypass this extra step, potentially leading to faster startup times\cite{MEHW18}.
+
+\textbf{Deployment Package Size}: Larger deployment packages directly translate to increased cold start overhead. The process of copying, loading, unpacking, and subsequently executing the function image is proportional to its size, resulting in a time-consuming bottleneck for bulky packages. Smaller packages necessitate fewer resources and processing time before actual function execution, streamlining the startup process \cite{MEHW18}.
+
+\textbf{Memory/CPU Resource Influence}: Cold start overhead diminishes with increasing memory and CPU allocations. This can be attributed to the enhanced ability of the container to handle the initial loading and setup tasks more efficiently, particularly when CPU utilization remains high at lower memory settings. Conversely, at higher memory settings where the CPU becomes underutilized, the potential benefits of resource scaling might be negligible. It's important to note that this specifically focuses on the scenario where low memory settings coincide with significant CPU usage \cite{MEHW18}.
+
+ohers will be added later
 \subsection{Current Research on Solving Cold Start Problem}
+
+
 
 
 
